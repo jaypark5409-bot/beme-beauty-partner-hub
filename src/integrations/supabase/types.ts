@@ -14,13 +14,84 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      form_rate_limits: {
+        Row: {
+          attempts: number
+          key: string
+          window_start: string
+        }
+        Insert: {
+          attempts?: number
+          key: string
+          window_start?: string
+        }
+        Update: {
+          attempts?: number
+          key?: string
+          window_start?: string
+        }
+        Relationships: []
+      }
+      partner_applications: {
+        Row: {
+          business_name: string
+          created_at: string
+          email: string
+          id: string
+          instagram: string | null
+          name: string
+          phone: string | null
+          type: string
+        }
+        Insert: {
+          business_name: string
+          created_at?: string
+          email: string
+          id?: string
+          instagram?: string | null
+          name: string
+          phone?: string | null
+          type?: string
+        }
+        Update: {
+          business_name?: string
+          created_at?: string
+          email?: string
+          id?: string
+          instagram?: string | null
+          name?: string
+          phone?: string | null
+          type?: string
+        }
+        Relationships: []
+      }
+      waitlist: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      consume_form_limit: {
+        Args: { p_key: string; p_max: number }
+        Returns: boolean
+      }
     }
     Enums: {
       [_ in never]: never
